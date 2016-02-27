@@ -72,6 +72,7 @@ module Audited
     def user_as_string=(user)
       # reset both either way
       self.user_as_model = self.username = nil
+      self.organization_id = self.user.organization_id
       user.is_a?(::ActiveRecord::Base) ?
         self.user_as_model = user :
         self.username = user
