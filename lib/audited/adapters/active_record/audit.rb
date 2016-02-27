@@ -45,6 +45,7 @@ module Audited
           user.is_a?(::ActiveRecord::Base) ?
             self.user_as_model = user :
             self.username = user
+          self.organization_id = user.organization_id
         end
         alias_method :user_as_model=, :user=
         alias_method :user=, :user_as_string=
