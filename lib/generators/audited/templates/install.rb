@@ -1,6 +1,7 @@
 class <%= migration_class_name %> < ActiveRecord::Migration
   def self.up
     create_table :audits, :force => true do |t|
+      t.column :id, :string
       t.column :auditable_id, :string
       t.column :organization_id, :datetime
       t.column :auditable_type, :string
