@@ -99,6 +99,8 @@ module Audited
 
     def set_request_uuid
       self.request_uuid ||= SecureRandom.uuid
+      self.id = Digest::SHA1.hexdigest(Socket.gethostname + Time.now.to_f.to_s + (rand Math::E..Math::PI).to_s + SecureRandom.urlsafe_base64(nil, false))
+
     end
   end
 end
