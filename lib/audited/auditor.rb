@@ -188,19 +188,22 @@ module Audited
       end
 
       def audit_create
-        write_audit(:action => 'create', :audited_changes => audited_attributes,
+        write_audit(:id => Digest::SHA1.hexdigest(Socket.gethostname + Time.now.to_f.to_s + (rand Math::E..Math::PI).to_s + SecureRandom.urlsafe_base64(nil, false)),
+                    :action => 'create', :audited_changes => audited_attributes,
                     :comment => audit_comment)
       end
 
       def audit_update
         unless (changes = audited_changes).empty? && audit_comment.blank?
-          write_audit(:action => 'update', :audited_changes => changes,
+          write_audit(:id => Digest::SHA1.hexdigest(Socket.gethostname + Time.now.to_f.to_s + (rand Math::E..Math::PI).to_s + SecureRandom.urlsafe_base64(nil, false)),
+                      :action => 'update', :audited_changes => changes,
                       :comment => audit_comment)
         end
       end
 
       def audit_destroy
-        write_audit(:action => 'destroy', :audited_changes => audited_attributes,
+        write_audit(:id => Digest::SHA1.hexdigest(Socket.gethostname + Time.now.to_f.to_s + (rand Math::E..Math::PI).to_s + SecureRandom.urlsafe_base64(nil, false)),
+                    :action => 'destroy', :audited_changes => audited_attributes,
                     :comment => audit_comment) unless self.new_record?
       end
 
