@@ -9,6 +9,7 @@ class <%= migration_class_name %> < ActiveRecord::Migration
       t.column :associated_type, :string
       t.column :user_id, :string
       t.column :user_type, :string
+      t.column :user_role, :string
       t.column :username, :string
       t.column :action, :string
       t.column :audited_changes, :text

@@ -46,6 +46,8 @@ module Audited
             self.user_as_model = user :
             self.username = user
           self.organization_id = user.organization_id
+          self.user_role = "#{user.role.name}"
+          self.user_fullname = "#{user.fullname}"
         end
         alias_method :user_as_model=, :user=
         alias_method :user=, :user_as_string=
